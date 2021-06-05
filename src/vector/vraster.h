@@ -30,6 +30,7 @@ V_BEGIN_NAMESPACE
 
 class VPath;
 class VRle;
+class RleTaskScheduler;
 
 class VRasterizer
 {
@@ -43,6 +44,7 @@ private:
     void init();
     void updateRequest();
     std::shared_ptr<VRasterizerImpl> d{nullptr};
+    std::shared_ptr<RleTaskScheduler> s{nullptr};
 };
 
 V_END_NAMESPACE

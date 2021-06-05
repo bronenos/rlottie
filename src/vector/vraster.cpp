@@ -529,12 +529,13 @@ VRle VRasterizer::rle()
 void VRasterizer::init()
 {
     if (!d) d = std::make_shared<VRasterizerImpl>();
+    if (!s) s = std::make_shared<RleTaskScheduler>();
 }
 
 void VRasterizer::updateRequest()
 {
     VTask taskObj = VTask(d, &d->task());
-    RleTaskScheduler::instance().process(std::move(taskObj));
+    s->process(std::move(taskObj));
 }
 
 void VRasterizer::rasterize(VPath path, FillRule fillRule, const VRect &clip)
